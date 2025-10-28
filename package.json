@@ -4,7 +4,6 @@
   "name": "my-react-testing",
   "private": true,
   "version": "0.0.0",
-  "homepage": "https://hugogrant15.github.io/my-react-testing/",
   "type": "module",
   "scripts": {
     "dev": "vite",

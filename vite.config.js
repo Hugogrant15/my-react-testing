@@ -10,4 +10,5 @@ export default defineConfig({
       },
     }),
   ],
+  base: '/my-react-testing/', // 👈 must match your repo name exactly
 })
