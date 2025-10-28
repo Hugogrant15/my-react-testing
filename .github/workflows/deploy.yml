@@ -1,19 +1,19 @@
-name: Build and Deploy React Vite App
+name: Build and Deploy React Vite App to GitHub Pages
 
 on:
   push:
     branches:
-      - main  # runs every time you push to main
+      - main  # Run this every time you push to main
 
 permissions:
-  contents: write  # needed to push to gh-pages branch
+  contents: write  # Needed to push to gh-pages branch
 
 jobs:
   build-deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout Repository
         uses: actions/checkout@v4
 
       - name: Set up Node.js
@@ -21,10 +21,10 @@ jobs:
         with:
           node-version: 20
 
-      - name: Install dependencies
+      - name: Install Dependencies
         run: npm ci
 
-      - name: Build project
+      - name: Build Project
         run: npm run build
 
       - name: Deploy to GitHub Pages
