@@ -4,11 +4,10 @@ on:
   push:
     branches:
       - main
-      - features/**    # 👈 deploys any branch starting with "features/"
-
+      - features/**    # deploys any branch starting with "features/"
   pull_request:
     branches:
-      - main           # optional: runs CI checks when you open a PR to main
+      - main           # optional: runs CI checks when opening PRs to main
 
 permissions:
   contents: write
@@ -33,18 +32,8 @@ jobs:
         run: npm run build
 
       - name: Deploy to GitHub Pages
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
-          npm run deploy
-      
-            - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
-          destination_dir: ${{ github.ref_name }}  # 👈 deploys feature branches to subfolders
-
+          destination_dir: ${{ github.ref_name }}  # deploys feature branches to subfolders
